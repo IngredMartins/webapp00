@@ -7,7 +7,7 @@ db.fillna('', inplace=True)
 Escrever(db)
 
 # Use st.title("") para adicionar um TÍTULO ao seu Web app
-st.title("MEU 1º WEB APP STREAMLIT")
+st.title("Bem vindo/a ao meu primeiro WebApp :) ")
 
 # Use st.header("") para adicionar um CABEÇALHO ao seu Web app
 st.header("Hejheheheh! Prof. Massaki")
