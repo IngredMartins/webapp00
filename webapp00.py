@@ -1,7 +1,7 @@
 # MEU PRIMEIRO WEB APP
 import streamlit as st
 from ACTlib01 import *
-url = "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww3.unicentro.br%2Fpetfisica%2F2015%2F10%2F16%2F1311%2F&psig=AOvVaw39Wpg0efpMS35duKSRbFmM&ust=1729381369883000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCKDnsOWNmYkDFQAAAAAdAAAAABAE"
+url = "https://br.freepik.com/imagem-ia-gratis/um-close-up-de-uma-pena-fofa_42662876.htm#fromView=keyword&page=1&position=11&uuid=4fe5ccc6-7571-4e25-a67d-b719c60a8356"
 db = Ler_GooglePlanilha(url)
 db.fillna('', inplace=True)
 Escrever(db)
