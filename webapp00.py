@@ -10,10 +10,10 @@ Escrever(db)
 st.title("Bem vindo/a ao meu primeiro WebApp :) ")
 
 # Use st.header("") para adicionar um CABEÇALHO ao seu Web app
-st.header("O Diego é um enrustido viciado em coca cola")
+st.header("Mentoria do Prof. Massaki")
 
 # Use st.subheader("") para adicionar um SUB CABEÇALHO ao seu Web app
-st.subheader("Ele prefere Python do que C#, que crime....")
+st.subheader("Ele prefere Python, que crime....")
 
 # Use st.write("") para adicionar um texto ao seu Web app
 st.write("Como já deve ter percebido, o método st.write() é usado para escrita de texto e informações gerais!")
