@@ -6,6 +6,8 @@ db = Ler_GooglePlanilha(url)
 db.fillna('', inplace=True)
 Escrever(db)
 
+st image = ("https://br.freepik.com/imagem-ia-gratis/um-close-up-de-uma-pena-fofa_42662876.htm#fromView=keyword&page=1&position=11&uuid=4fe5ccc6-7571-4e25-a67d-b719c60a8356")
+
 # Use st.title("") para adicionar um TÍTULO ao seu Web app
 st.title("Bem vindo/a ao meu primeiro WebApp :) ")
 
