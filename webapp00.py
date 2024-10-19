@@ -21,4 +21,4 @@ st.write("Como já deve ter percebido, o método st.write() é usado para escrit
 values = st.slider("Select a range of values", 0.0, 50.0, (5.0, 15.0))
 st.write("Values:", values)
 
-st.image("uma-imagem-abstrata-colorida-de-um-design-abstrato-roxo-e-rosa_901383-145703.avif", caption="Sunrise by the mountains")
+st.image("images.jpg", caption="Sunrise by the mountains")
