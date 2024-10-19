@@ -19,3 +19,5 @@ values = st.slider("Select a range of values", 0.0, 50.0, (5.0, 15.0))
 st.write("Values:", values)
 
 st.image("images.jpg", caption="Sunrise by the mountains")
+page_bg_image = "images.jpg"
+
