@@ -4,13 +4,13 @@ from ACTlib01 import *
 
 
 # Use st.title("") para adicionar um TÍTULO ao seu Web app
-st.title("Bem vindo/a ao meu primeiro WebApp :) ")
+st.title("Bem vindo/a ao seu assistente de navegação :) ")
 
 # Use st.header("") para adicionar um CABEÇALHO ao seu Web app
-st.header("Mentoria do Prof. Massaki")
+st.header("Vamos iniciar ?")
 
 # Use st.subheader("") para adicionar um SUB CABEÇALHO ao seu Web app
-st.subheader("Ele prefere Python, que crime....")
+st.subheader("O que deseja fazer hoje?")
 
 # Use st.write("") para adicionar um texto ao seu Web app
 st.write("Como já deve ter percebido, o método st.write() é usado para escrita de texto e informações gerais!")
