@@ -13,7 +13,12 @@ st.header("Vamos iniciar ?")
 st.subheader("O que deseja fazer hoje?")
 
 # Use st.write("") para adicionar um texto ao seu Web app
-st.writelist (" 1. Assistência para ligar para um contato 2. Assistência para enviar uma mensagem 3. Assistência para navegar na internet 4. Assistência para usar a câmera")
+st.write("""
+1. Assistência para ligar para um contato  
+2. Assistência para enviar uma mensagem  
+3. Assistência para navegar na internet  
+4. Assistência para usar a câmera
+""")
 
 values = st.slider("Select a range of values", 0.0, 50.0, (5.0, 15.0))
 st.write("Values:", values)
