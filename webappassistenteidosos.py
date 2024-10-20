@@ -1,6 +1,7 @@
 import streamlit as st
 
 # Função para a tela de boas-vindas
+# def é para definir uma função
 def tela_boas_vindas():
     st.title("Assistente para Idosos")
     st.write("Bem-vindo! Escolha uma das opções abaixo para começar.")
