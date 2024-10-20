@@ -1,28 +1,63 @@
-# MEU PRIMEIRO WEB APP
 import streamlit as st
-from ACTlib01 import *
 
+# Função para a tela de boas-vindas
+def tela_boas_vindas():
+    st.title("Assistente para Idosos")
+    st.write("Bem-vindo! Escolha uma das opções abaixo para começar.")
 
-# Use st.title("") para adicionar um TÍTULO ao seu Web app
-st.title("Bem vindo/a ao seu assistente de navegação :) ")
+# Função para ligar para um contato
+def ligar_contato():
+    st.subheader("Ligar para um Contato")
+    contato = st.selectbox("Selecione um contato:", ["Ana", "João", "Maria", "Pedro"])
+    if st.button("Ligar"):
+        st.success(f"Ligando para {contato}...")
 
-# Use st.header("") para adicionar um CABEÇALHO ao seu Web app
-st.header("Vamos iniciar ?")
+# Função para enviar uma mensagem
+def enviar_mensagem():
+    st.subheader("Enviar Mensagem")
+    contato = st.selectbox("Selecione um contato para enviar mensagem:", ["Ana", "João", "Maria", "Pedro"])
+    mensagem = st.text_area("Digite a mensagem:")
+    if st.button("Enviar"):
+        st.success(f"Mensagem enviada para {contato}: {mensagem}")
 
-# Use st.subheader("") para adicionar um SUB CABEÇALHO ao seu Web app
-st.subheader("O que deseja fazer hoje?")
+# Função para navegar na internet
+def navegar_internet():
+    st.subheader("Navegar na Internet")
+    url = st.text_input("Digite o site que deseja visitar (ex: www.google.com):")
+    if st.button("Navegar"):
+        if url:
+            st.success(f"Abrindo o site {url}...")
+        else:
+            st.error("Por favor, insira um URL válido.")
 
-# Use st.write("") para adicionar um texto ao seu Web app
-st.write("""
-1. Assistência para ligar para um contato  
-2. Assistência para enviar uma mensagem  
-3. Assistência para navegar na internet  
-4. Assistência para usar a câmera
-""")
+# Função para usar a câmera
+def usar_camera():
+    st.subheader("Usar a Câmera")
+    if st.button("Tirar Foto"):
+        st.success("Foto tirada com sucesso!")
+        # Aqui, poderia ser implementada a funcionalidade de tirar uma foto real, se necessário
 
-values = st.slider("Select a range of values", 0.0, 50.0, (5.0, 15.0))
-st.write("Values:", values)
+# Função principal que controla a navegação
+def main():
+    tela_boas_vindas()
+    
+    # Menu de opções
+    opcao = st.selectbox("O que você gostaria de fazer?", 
+                         ["Ligar para um Contato", 
+                          "Enviar uma Mensagem", 
+                          "Navegar na Internet", 
+                          "Usar a Câmera"])
+    
+    # Chamar a função correta com base na escolha do usuário
+    if opcao == "Ligar para um Contato":
+        ligar_contato()
+    elif opcao == "Enviar uma Mensagem":
+        enviar_mensagem()
+    elif opcao == "Navegar na Internet":
+        navegar_internet()
+    elif opcao == "Usar a Câmera":
+        usar_camera()
 
-st.image("images.jpg", caption="Sunrise by the mountains")
-page_bg_img = 'images.jpg'
-
+# Execução do aplicativo
+if __name__ == '__main__':
+    main()
