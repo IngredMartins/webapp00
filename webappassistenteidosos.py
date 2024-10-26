@@ -9,7 +9,7 @@ def tela_boas_vindas():
 # Função para ligar para um contato
 def ligar_contato():
     st.subheader("Ligar para um Contato")
-    contato = st.selectbox("Selecione um contato:", ["Ana", "João", "Maria", "Pedro"])
+    contato = st.selectbox("Selecione um contato:", ["Massaki", "Amadeu", "Gabriel", "Pedro"])
     if st.button("Ligar"):
         st.success(f"Ligando para {contato}...")
 
