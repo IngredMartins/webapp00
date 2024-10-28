@@ -39,12 +39,13 @@ def navegar_internet():
 def usar_camera():
     st.subheader("Usar a Câmera")
     if st.button("Tirar Foto"):
-        st.success("Foto tirada com sucesso!")
+    if picture:
+    st.image(picture)
         # Aqui, poderia ser implementada a funcionalidade de tirar uma foto real, se necessário
 
 # Função principal que controla a navegação
 def main():
-    tela_boas_vindas()
+    tela_boas_vindas() 
     
     # Menu de opções
     opcao = st.selectbox("O que você gostaria de fazer?", 
@@ -52,7 +53,7 @@ def main():
                           "Enviar uma Mensagem", 
                           "Navegar na Internet", 
                           "Usar a Câmera"])
-    
+      
     # Chamar a função correta com base na escolha do usuário
     if opcao == "Ligar para um Contato":
         ligar_contato()
@@ -62,9 +63,6 @@ def main():
         navegar_internet()
     elif opcao == "Usar a Câmera":
         usar_camera()
-
-if picture:
-    st.image(picture)
 
 #Função mensagem na tela
 import plivo 
