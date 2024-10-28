@@ -20,6 +20,8 @@ def enviar_mensagem():
     mensagem = st.text_area("Digite a mensagem:")
     if st.button("Enviar"):
         st.success(f"Mensagem enviada para {contato}: {mensagem}")
+enable = st.checkbox("Enable camera")
+picture = st.camera_input("Take a picture", disabled=not enable)
 
 # Função para navegar na internet
 def navegar_internet():
@@ -58,10 +60,6 @@ def main():
         navegar_internet()
     elif opcao == "Usar a Câmera":
         usar_camera()
-
-#Função captura de tela
-enable = st.checkbox("Enable camera")
-picture = st.camera_input("Take a picture", disabled=not enable)
 
 if picture:
     st.image(picture)
