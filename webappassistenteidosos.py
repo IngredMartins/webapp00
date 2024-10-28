@@ -59,12 +59,17 @@ def main():
     elif opcao == "Usar a Câmera":
         usar_camera()
 
-#captura de tela
+#Função captura de tela
 enable = st.checkbox("Enable camera")
 picture = st.camera_input("Take a picture", disabled=not enable)
 
 if picture:
     st.image(picture)
+
+#Função mensagem na tela
+import plivo client = plivo.RestClient('<auth_id>','<auth_token>')
+response = client.messages.create( src='<sender_number>', dst='<destination_number>', text='Hello, world!',) 
+print(response)
 
 # Execução do aplicativo
 if __name__ == '__main__':
