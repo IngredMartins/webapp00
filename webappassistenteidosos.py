@@ -22,7 +22,7 @@ def enviar_mensagem():
         client = plivo.RestClient('<auth_id>','<auth_token>') 
         response = client.messages.create( 
         src='<sender_number>')
-        dst= <destination_number>
+        dst='<destination_number>')            
         text="Hello, world"')'
         
 # Função para navegar na internet
