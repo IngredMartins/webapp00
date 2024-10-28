@@ -67,7 +67,8 @@ if picture:
     st.image(picture)
 
 #Função mensagem na tela
-import plivo client = plivo.RestClient('<auth_id>','<auth_token>')
+import plivo 
+client = plivo.RestClient('<auth_id>','<auth_token>')
 response = client.messages.create( src='<sender_number>', dst='<destination_number>', text='Hello, world!',) 
 print(response)
 
