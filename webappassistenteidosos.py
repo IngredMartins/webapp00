@@ -19,9 +19,12 @@ def enviar_mensagem():
     contato = st.selectbox("Selecione um contato para enviar mensagem:", ["Ana", "João", "Maria", "Pedro"])
     mensagem = st.text_area("Digite a mensagem:")
     if st.button("Enviar"):
-        st.success(f"Mensagem enviada para {contato}: {mensagem}")
-enable = st.checkbox("Enable camera")
-picture = st.camera_input("Take a picture", disabled=not enable)
+        client = plivo.RestClient('<auth_id>','<auth_token>') 
+        response = client.messages.create( 
+src='<sender_number>')
+dst='<destination_number>'
+text='Hello, world!',)
+ print(response)
 
 # Função para navegar na internet
 def navegar_internet():
