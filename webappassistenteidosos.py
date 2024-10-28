@@ -59,6 +59,13 @@ def main():
     elif opcao == "Usar a Câmera":
         usar_camera()
 
+#captura de tela
+enable = st.checkbox("Enable camera")
+picture = st.camera_input("Take a picture", disabled=not enable)
+
+if picture:
+    st.image(picture)
+
 # Execução do aplicativo
 if __name__ == '__main__':
     main()
