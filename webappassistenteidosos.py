@@ -23,7 +23,7 @@ def enviar_mensagem():
         response = client.messages.create( 
         src='<sender_number>')
         dst='<destination_number>'
-        text='Hello, world!')'
+        text='Hello, world!'              )
         
 # Função para navegar na internet
 def navegar_internet():
