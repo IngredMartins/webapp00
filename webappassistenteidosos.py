@@ -39,6 +39,7 @@ def navegar_internet():
 def usar_camera():
     st.subheader("Usar a Câmera")
     if st.button("Tirar Foto"):
+ picture = st.camera_input("Tirar uma foto")
        if picture:
          st.image(picture)
         # Aqui, poderia ser implementada a funcionalidade de tirar uma foto real, se necessário
