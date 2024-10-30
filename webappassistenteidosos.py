@@ -1,25 +1,31 @@
-import streamlit as st
+ import streamlit as st
+import urllib.parse
 
 # Função para a tela de boas-vindas
 def tela_boas_vindas():
     st.title("Assistente para Idosos")
     st.write("Bem-vindo! Escolha uma das opções abaixo para começar.")
 
-# Função para ligar para um contato (simulação)
-def ligar_contato():
-    st.subheader("Ligar para um Contato")
-    contato = st.selectbox("Selecione um contato:", ["Massaki", "Amadeu", "Gabriel", "Pedro"])
-    if st.button("Ligar"):
-        st.success(f"Simulando ligação para {contato}...")  # Simula a ação de ligar
+# Função para ligar para um contato via WhatsApp
+def ligar_contato_whatsapp():
+    st.subheader("Ligar para um Contato via WhatsApp")
+    contato = st.selectbox("Selecione um contato:", ["+5511999999999", "+5511988888888"])  # Números de exemplo
+    if st.button("Ligar pelo WhatsApp"):
+        whatsapp_url = f"https://wa.me/{contato}"
+        st.markdown(f"[Clique aqui para ligar pelo WhatsApp]({whatsapp_url})")
 
-# Função para enviar uma mensagem (simulação)
-def enviar_mensagem():
-    st.subheader("Enviar Mensagem")
-    contato = st.selectbox("Selecione um contato para enviar mensagem:", ["Ana", "João", "Maria", "Pedro"])
+# Função para enviar uma mensagem via WhatsApp
+def enviar_mensagem_whatsapp():
+    st.subheader("Enviar Mensagem via WhatsApp")
+    contato = st.selectbox("Selecione um contato para enviar mensagem:", ["+5511999999999", "+5511988888888"])  # Números de exemplo
     mensagem = st.text_area("Digite a mensagem:")
+    
     if st.button("Enviar"):
         if mensagem:
-            st.success(f"Mensagem enviada para {contato}: {mensagem}")  # Simula o envio da mensagem
+            # Codificar a mensagem para URL
+            mensagem_codificada = urllib.parse.quote(mensagem)
+            whatsapp_url = f"https://wa.me/{contato}?text={mensagem_codificada}"
+            st.markdown(f"[Clique aqui para enviar a mensagem pelo WhatsApp]({whatsapp_url})")
         else:
             st.error("Por favor, digite uma mensagem antes de enviar.")
 
@@ -29,7 +35,7 @@ def navegar_internet():
     url = st.text_input("Digite o site que deseja visitar (ex: www.google.com):")
     if st.button("Navegar"):
         if url:
-            st.success(f"Simulando a abertura do site {url}...")  # Simula a navegação
+            st.success(f"Abrindo o site {url}...")
         else:
             st.error("Por favor, insira um URL válido.")
 
@@ -46,16 +52,16 @@ def main():
     
     # Menu de opções
     opcao = st.selectbox("O que você gostaria de fazer?", 
-                         ["Ligar para um Contato", 
-                          "Enviar uma Mensagem", 
+                         ["Ligar para um Contato via WhatsApp", 
+                          "Enviar uma Mensagem via WhatsApp", 
                           "Navegar na Internet", 
                           "Usar a Câmera"])
       
     # Chamar a função correta com base na escolha do usuário
-    if opcao == "Ligar para um Contato":
-        ligar_contato()
-    elif opcao == "Enviar uma Mensagem":
-        enviar_mensagem()
+    if opcao == "Ligar para um Contato via WhatsApp":
+        ligar_contato_whatsapp()
+    elif opcao == "Enviar uma Mensagem via WhatsApp":
+        enviar_mensagem_whatsapp()
     elif opcao == "Navegar na Internet":
         navegar_internet()
     elif opcao == "Usar a Câmera":
