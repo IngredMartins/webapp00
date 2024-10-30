@@ -1,4 +1,4 @@
- import streamlit as st
+import streamlit as st
 import urllib.parse
 
 # Função para a tela de boas-vindas
