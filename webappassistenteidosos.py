@@ -1,7 +1,7 @@
 import streamlit as st
+import plivo  # Certifique-se de que a biblioteca Plivo esteja instalada
 
 # Função para a tela de boas-vindas
-# def é para definir uma função
 def tela_boas_vindas():
     st.title("Assistente para Idosos")
     st.write("Bem-vindo! Escolha uma das opções abaixo para começar.")
@@ -18,13 +18,19 @@ def enviar_mensagem():
     st.subheader("Enviar Mensagem")
     contato = st.selectbox("Selecione um contato para enviar mensagem:", ["Ana", "João", "Maria", "Pedro"])
     mensagem = st.text_area("Digite a mensagem:")
+    
     if st.button("Enviar"):
-        client = plivo.RestClient('<auth_id>','<auth_token>') 
-        response = client.messages.create( 
-        src='<sender_number>')
-        dst='<destination_number>'           
-        text="Hello, world"')'
-        
+        if mensagem:
+            client = plivo.RestClient('<auth_id>', '<auth_token>') 
+            response = client.messages.create(
+                src='<sender_number>',  # Seu número de telefone
+                dst='<destination_number>',  # Número do destinatário
+                text=mensagem  # Mensagem a ser enviada
+            )
+            st.success(f"Mensagem enviada para {contato}.")
+        else:
+            st.error("Por favor, digite uma mensagem antes de enviar.")
+
 # Função para navegar na internet
 def navegar_internet():
     st.subheader("Navegar na Internet")
@@ -38,11 +44,9 @@ def navegar_internet():
 # Função para usar a câmera
 def usar_camera():
     st.subheader("Usar a Câmera")
-    if st.button("Tirar Foto"):
- picture = st.camera_input("Tirar uma foto")
-       if picture:
-         st.image(picture)
-        # Aqui, poderia ser implementada a funcionalidade de tirar uma foto real, se necessário
+    picture = st.camera_input("Tirar uma foto")
+    if picture:
+        st.image(picture)
 
 # Função principal que controla a navegação
 def main():
@@ -64,7 +68,7 @@ def main():
         navegar_internet()
     elif opcao == "Usar a Câmera":
         usar_camera()
- 
+
 # Execução do aplicativo
 if __name__ == '__main__':
     main()
