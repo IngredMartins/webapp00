@@ -1,6 +1,14 @@
 import streamlit as st
 import urllib.parse
 
+# Lista de contatos com nomes e números de telefone
+contatos = {
+    "Massaki": "+5511999999999",
+    "Ingred": "+5511944701187",
+    "Gabriel": "+5511977777777",
+    "Pedro": "+5511966666666"
+}
+
 # Função para a tela de boas-vindas
 def tela_boas_vindas():
     st.title("Assistente para Idosos")
@@ -9,22 +17,30 @@ def tela_boas_vindas():
 # Função para ligar para um contato via WhatsApp
 def ligar_contato_whatsapp():
     st.subheader("Ligar para um Contato via WhatsApp")
-    contato = st.selectbox("Selecione um contato:", ["Ingred +5511944701187", "+5511988888888"])  # Números de exemplo
+    contato_selecionado = st.selectbox("Selecione um contato:", [f"{nome} ({numero})" for nome, numero in contatos.items()])
+    
+    # Extrair o número do contato selecionado
+    contato_numero = contatos[contato_selecionado.split(' (')[0]]  # Pega apenas o nome antes de ' ('
+    
     if st.button("Ligar pelo WhatsApp"):
-        whatsapp_url = f"https://wa.me/{contato}"
+        whatsapp_url = f"https://wa.me/{contato_numero}"
         st.markdown(f"[Clique aqui para ligar pelo WhatsApp]({whatsapp_url})")
 
 # Função para enviar uma mensagem via WhatsApp
 def enviar_mensagem_whatsapp():
     st.subheader("Enviar Mensagem via WhatsApp")
-    contato = st.selectbox("Selecione um contato para enviar mensagem:", ["+5511999999999", "+5511988888888"])  # Números de exemplo
+    contato_selecionado = st.selectbox("Selecione um contato para enviar mensagem:", [f"{nome} ({numero})" for nome, numero in contatos.items()])
+    
+    # Extrair o número do contato selecionado
+    contato_numero = contatos[contato_selecionado.split(' (')[0]]  # Pega apenas o nome antes de ' ('
+    
     mensagem = st.text_area("Digite a mensagem:")
     
     if st.button("Enviar"):
         if mensagem:
             # Codificar a mensagem para URL
             mensagem_codificada = urllib.parse.quote(mensagem)
-            whatsapp_url = f"https://wa.me/{contato}?text={mensagem_codificada}"
+            whatsapp_url = f"https://wa.me/{contato_numero}?text={mensagem_codificada}"
             st.markdown(f"[Clique aqui para enviar a mensagem pelo WhatsApp]({whatsapp_url})")
         else:
             st.error("Por favor, digite uma mensagem antes de enviar.")
