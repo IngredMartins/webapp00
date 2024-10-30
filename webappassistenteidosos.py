@@ -9,7 +9,7 @@ def tela_boas_vindas():
 # Função para ligar para um contato via WhatsApp
 def ligar_contato_whatsapp():
     st.subheader("Ligar para um Contato via WhatsApp")
-    contato = st.selectbox("Selecione um contato:", ["+5511999999999", "+5511988888888"])  # Números de exemplo
+    contato = st.selectbox("Selecione um contato:", ["Ingred +5511944701187", "+5511988888888"])  # Números de exemplo
     if st.button("Ligar pelo WhatsApp"):
         whatsapp_url = f"https://wa.me/{contato}"
         st.markdown(f"[Clique aqui para ligar pelo WhatsApp]({whatsapp_url})")
