@@ -6,7 +6,7 @@ contatos = {
     "Massaki": "+5511999999999",
     "Ingred": "+5511944701187",
     "Gabriel": "+5511977777777",
-    "Pedro": "+5511966666666"
+    "Pedro": "+5511950815157"
 }
 
 # Função para a tela de boas-vindas
