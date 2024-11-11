@@ -1,15 +1,17 @@
 import streamlit as st
-import urllib.parse #biblioteca de url.
+import urllib.parse  # biblioteca de url
 
 
 def boas_vindas():
- st.title("Assistente para Idosos")
- st.write("Bem-vindo! Escolha uma das opções abaixo.")
+    st.title("Bem-vindo ao Assistente inteligente para Idosos")
+    st.write("Escolha uma das opções abaixo.")
+
 
 listaDeContatos = {
     "Ingred": "+5511944701187",
     "Gabriel": "+5511945329796",
-    "Pedro": "+5511950815157"}
+    "Pedro": "+5511950815157"
+}
 
 def ligar_contato_whatsapp():
     st.subheader("Ligar para alguém via WhatsApp")
@@ -22,10 +24,11 @@ def ligar_contato_whatsapp():
         whatsapp_url = f"https://wa.me/{contato_numero}"
         st.markdown(f"[Clique aqui para ligar pelo WhatsApp]({whatsapp_url})")
 
+
 # Função para enviar uma mensagem via WhatsApp
 def enviar_mensagem_whatsapp():
     st.subheader("Enviar Mensagem via WhatsApp")
-    contato_selecionado = st.selectbox("Selecione um contato para enviar mensagem:", [f"{nome} ({numero})" for nome, numero in contatos.items()])
+    contato_selecionado = st.selectbox("Selecione um contato para enviar mensagem:", [f"{nome} ({numero})" for nome, numero in listaDeContatos.items()])
     
     # Extrair o número do contato selecionado
     contato_numero = listaDeContatos[contato_selecionado.split(' (')[0]]  # Pega apenas o nome antes de ' ('
@@ -41,6 +44,7 @@ def enviar_mensagem_whatsapp():
         else:
             st.error("Por favor, digite uma mensagem antes de enviar.")
 
+
 # Função para navegar na internet
 def navegar_internet():
     st.subheader("Navegar na Internet")
@@ -51,6 +55,7 @@ def navegar_internet():
         else:
             st.error("Por favor, insira um URL válido.")
 
+
 # Função para usar a câmera
 def usar_camera():
     st.subheader("Usar a Câmera")
@@ -58,9 +63,10 @@ def usar_camera():
     if picture:
         st.image(picture)
 
+
 # Função principal que controla a navegação
 def main():
-    tela_boas_vindas() 
+    boas_vindas()  # Corrigido para boas_vindas()
     
     # Menu de opções
     opcao = st.selectbox("O que você gostaria de fazer?", 
@@ -78,6 +84,7 @@ def main():
         navegar_internet()
     elif opcao == "Usar a Câmera":
         usar_camera()
+
 
 # Execução do aplicativo
 if __name__ == '__main__':
