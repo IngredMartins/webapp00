@@ -4,8 +4,26 @@ import urllib.parse  # biblioteca de url
 
 def boas_vindas():
     st.title("Bem-vindo ao Assistente inteligente para Idosos")
-    st.write("Escolha uma das opções abaixo.")
 
+# Função principal que controla a navegação
+def main():
+    boas_vindas()     
+    
+    opcao = st.selectbox("O que você gostaria de fazer?", 
+                         ["Ligar para um Contato via WhatsApp", 
+                          "Enviar uma Mensagem via WhatsApp", 
+                          "Navegar na Internet", 
+                          "Usar a Câmera"])
+      
+    # Chamar a função correta com base na escolha do usuário
+    if opcao == "Ligar para um Contato via WhatsApp":
+        ligar_contato_whatsapp()
+    elif opcao == "Enviar uma Mensagem via WhatsApp":
+        enviar_mensagem_whatsapp()
+    elif opcao == "Navegar na Internet":
+        navegar_internet()
+    elif opcao == "Usar a Câmera":
+        usar_camera()
 
 listaDeContatos = {
     "Ingred": "+5511944701187",
@@ -14,15 +32,14 @@ listaDeContatos = {
 }
 
 def ligar_contato_whatsapp():
-    st.subheader("Ligar para alguém via WhatsApp")
     contato_selecionado = st.selectbox("Selecione um contato:", [f"{nome} ({numero})" for nome, numero in listaDeContatos.items()])
+    contato_numero = listaDeContatos[contato_selecionado.split(' (')[0]]
     
-    # Extrair o número do contato selecionado
-    contato_numero = listaDeContatos[contato_selecionado.split(' (')[0]]  # Pega apenas o nome antes de ' ('
+    # Criar URL do WhatsApp
+    whatsapp_url = f"https://wa.me/{contato_numero}"
     
     if st.button("Ligar pelo WhatsApp"):
-        whatsapp_url = f"https://wa.me/{contato_numero}"
-        st.markdown(f"[Clique aqui para ligar pelo WhatsApp]({whatsapp_url})")
+        st.markdown(f"<a href='{whatsapp_url}' target='_blank'>Clique aqui para ligar pelo WhatsApp</a>", unsafe_allow_html=True)
 
 
 # Função para enviar uma mensagem via WhatsApp
@@ -64,26 +81,7 @@ def usar_camera():
         st.image(picture)
 
 
-# Função principal que controla a navegação
-def main():
-    boas_vindas()  # Corrigido para boas_vindas()
-    
-    # Menu de opções
-    opcao = st.selectbox("O que você gostaria de fazer?", 
-                         ["Ligar para um Contato via WhatsApp", 
-                          "Enviar uma Mensagem via WhatsApp", 
-                          "Navegar na Internet", 
-                          "Usar a Câmera"])
-      
-    # Chamar a função correta com base na escolha do usuário
-    if opcao == "Ligar para um Contato via WhatsApp":
-        ligar_contato_whatsapp()
-    elif opcao == "Enviar uma Mensagem via WhatsApp":
-        enviar_mensagem_whatsapp()
-    elif opcao == "Navegar na Internet":
-        navegar_internet()
-    elif opcao == "Usar a Câmera":
-        usar_camera()
+
 
 
 # Execução do aplicativo
