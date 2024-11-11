@@ -1,89 +1,55 @@
 import streamlit as st
-import urllib.parse  # biblioteca de url
+import urllib.parse
 
-
-def boas_vindas():
-    st.title("Bem-vindo ao Assistente inteligente para Idosos")
-
-# Função principal da navegação
-def main():
-    boas_vindas()     
-    
-    opcao = st.selectbox("O que você gostaria de fazer?", 
-                         ["Ligação via WhatsApp", 
-                          "Mensagem via WhatsApp", 
-                          "Acessar a Internet", 
-                          "Tirar uma foto"])
-      
-    if opcao == "Ligar para um Contato via WhatsApp":
-        ligar_contato_whatsapp()
-    elif opcao == "Enviar uma Mensagem via WhatsApp":
-        enviar_mensagem_whatsapp()
-    elif opcao == "Navegar na Internet":
-        navegar_internet()
-    elif opcao == "Usar a Câmera":
-        usar_camera()
-
+# Lista de contatos
 listaDeContatos = {
     "Ingred": "+5511944701187",
     "Gabriel": "+5511945329796",
     "Pedro": "+5511950815157"
 }
 
+# Função de boas-vindas com HTML personalizado
+def boas_vindas():
+    st.markdown("""
+    <style>
+    .title {
+        color: #2C3E50;
+        font-size: 36px;
+        font-weight: bold;
+    }
+    .subtitle {
+        color: #16A085;
+        font-size: 24px;
+    }
+    .description {
+        font-size: 18px;
+        color: #7F8C8D;
+    }
+    </style>
+    <div class="title">Assistente para Idosos</div>
+    <div class="subtitle">Bem-vindo! Escolha uma das opções abaixo.</div>
+    <div class="description">Este assistente foi projetado para tornar a comunicação mais fácil.</div>
+    """, unsafe_allow_html=True)
+
+# Ligar via WhatsApp com HTML
 def ligar_contato_whatsapp():
-    st.subheader("Ligar para alguém via WhatsApp")
-    contato_selecionado = st.selectbox("Para quem quer ligar hoje ?:", [f"{nome} ({numero})" for nome, numero in listaDeContatos.items()])
+    contato_selecionado = st.selectbox("Selecione um contato:", [f"{nome} ({numero})" for nome, numero in listaDeContatos.items()])
+    contato_numero = listaDeContatos[contato_selecionado.split(' (')[0]]
     
-    # Extrair o número do contato selecionado
-    contato_numero = listaDeContatos[contato_selecionado.split(' (')[0]]  # Pega apenas o nome antes de ' ('
-    
+    # Criar URL do WhatsApp
+    whatsapp_url = f"https://wa.me/{contato_numero}"
+
     if st.button("Ligar pelo WhatsApp"):
-        whatsapp_url = f"https://wa.me/{contato_numero}"
-        st.markdown(f"[Clique aqui para ligar pelo WhatsApp]({whatsapp_url})")
+        st.markdown(f"""
+        <a href="{whatsapp_url}" target="_blank" style="background-color: #16A085; padding: 10px 20px; color: white; border-radius: 5px; text-decoration: none; font-size: 18px;">Clique aqui para ligar pelo WhatsApp</a>
+        """, unsafe_allow_html=True)
 
+# Função principal
+def main():
+    boas_vindas()
+    opcao = st.selectbox("O que você gostaria de fazer?", ["Ligar para um Contato via WhatsApp"])
+    if opcao == "Ligar para um Contato via WhatsApp":
+        ligar_contato_whatsapp()
 
-# Função para enviar uma mensagem via WhatsApp
-def enviar_mensagem_whatsapp():
-    st.subheader("Enviar Mensagem via WhatsApp")
-    contato_selecionado = st.selectbox("Selecione um contato para enviar mensagem:", [f"{nome} ({numero})" for nome, numero in listaDeContatos.items()])
-    
-    # Extrair o número do contato selecionado
-    contato_numero = listaDeContatos[contato_selecionado.split(' (')[0]]  # Pega apenas o nome antes de ' ('
-    
-    mensagem = st.text_area("Digite a mensagem:")
-    
-    if st.button("Enviar"):
-        if mensagem:
-            # Codificar a mensagem para URL
-            mensagem_codificada = urllib.parse.quote(mensagem)
-            whatsapp_url = f"https://wa.me/{contato_numero}?text={mensagem_codificada}"
-            st.markdown(f"[Clique aqui para enviar a mensagem pelo WhatsApp]({whatsapp_url})")
-        else:
-            st.error("Por favor, digite uma mensagem antes de enviar.")
-
-
-# Função para navegar na internet
-def navegar_internet():
-    st.subheader("Navegar na Internet")
-    url = st.text_input("Digite o site que deseja visitar (ex: www.google.com):")
-    if st.button("Navegar"):
-        if url:
-            st.success(f"Abrindo o site {url}...")
-        else:
-            st.error("Por favor, insira um URL válido.")
-
-
-# Função para usar a câmera
-def usar_camera():
-    st.subheader("Usar a Câmera")
-    picture = st.camera_input("Tirar uma foto")
-    if picture:
-        st.image(picture)
-
-
-
-
-
-# Execução do aplicativo
 if __name__ == '__main__':
     main()
