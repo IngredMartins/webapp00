@@ -31,14 +31,15 @@ listaDeContatos = {
 }
 
 def ligar_contato_whatsapp():
-    contato_selecionado = st.selectbox("Selecione um contato:", [f"{nome} ({numero})" for nome, numero in listaDeContatos.items()])
-    contato_numero = listaDeContatos[contato_selecionado.split(' (')[0]]
+    st.subheader("Ligar para alguém via WhatsApp")
+    contato_selecionado = st.selectbox("Para quem quer ligar hoje ?:", [f"{nome} ({numero})" for nome, numero in listaDeContatos.items()])
     
-    # Criar URL do WhatsApp
-    whatsapp_url = f"https://wa.me/{contato_numero}"
+    # Extrair o número do contato selecionado
+    contato_numero = listaDeContatos[contato_selecionado.split(' (')[0]]  # Pega apenas o nome antes de ' ('
     
     if st.button("Ligar pelo WhatsApp"):
-        st.markdown(f"<a href='{whatsapp_url}' target='_blank'>Clique aqui para ligar pelo WhatsApp</a>", unsafe_allow_html=True)
+        whatsapp_url = f"https://wa.me/{contato_numero}"
+        st.markdown(f"[Clique aqui para ligar pelo WhatsApp]({whatsapp_url})")
 
 
 # Função para enviar uma mensagem via WhatsApp
