@@ -5,17 +5,16 @@ import urllib.parse  # biblioteca de url
 def boas_vindas():
     st.title("Bem-vindo ao Assistente inteligente para Idosos")
 
-# Função principal que controla a navegação
+# Função principal da navegação
 def main():
     boas_vindas()     
     
     opcao = st.selectbox("O que você gostaria de fazer?", 
-                         ["Ligar para um Contato via WhatsApp", 
-                          "Enviar uma Mensagem via WhatsApp", 
-                          "Navegar na Internet", 
-                          "Usar a Câmera"])
+                         ["Ligação via WhatsApp", 
+                          "Mensagem via WhatsApp", 
+                          "Acessar a Internet", 
+                          "Tirar uma foto"])
       
-    # Chamar a função correta com base na escolha do usuário
     if opcao == "Ligar para um Contato via WhatsApp":
         ligar_contato_whatsapp()
     elif opcao == "Enviar uma Mensagem via WhatsApp":
