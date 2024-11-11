@@ -1,7 +1,7 @@
 import streamlit as st
 import urllib.parse
 
-print "Boas_Vindas"()
+"Boas_Vindas()
 st.title("Assistente para Idosos")
 st.write("Bem-vindo! Escolha uma das opções abaixo.")
 
