@@ -2,7 +2,7 @@ import streamlit as st
 import urllib.parse #biblioteca de url.
 
 
-def Boas_Vindas():
+def boas_vindas():
  st.title("Assistente para Idosos")
  st.write("Bem-vindo! Escolha uma das opções abaixo.")
 
