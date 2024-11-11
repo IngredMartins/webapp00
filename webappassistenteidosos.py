@@ -1,5 +1,6 @@
 import streamlit as st
-import urllib.parse
+import urllib.parse #biblioteca de url.
+
 
 def Boas_Vindas():
  st.title("Assistente para Idosos")
@@ -10,13 +11,12 @@ listaDeContatos = {
     "Gabriel": "+5511945329796",
     "Pedro": "+5511950815157"}
 
-# Função para ligar para um contato via WhatsApp
 def ligar_contato_whatsapp():
-    st.subheader("Ligar para um Contato via WhatsApp")
-    contato_selecionado = st.selectbox("Selecione um contato:", [f"{nome} ({numero})" for nome, numero in contatos.items()])
+    st.subheader("Ligar para alguém via WhatsApp")
+    contato_selecionado = st.selectbox("Selecione um contato:", [f"{nome} ({numero})" for nome, numero in listaDeContatos.items()])
     
     # Extrair o número do contato selecionado
-    contato_numero = contatos[contato_selecionado.split(' (')[0]]  # Pega apenas o nome antes de ' ('
+    contato_numero = listaDeContatos[contato_selecionado.split(' (')[0]]  # Pega apenas o nome antes de ' ('
     
     if st.button("Ligar pelo WhatsApp"):
         whatsapp_url = f"https://wa.me/{contato_numero}"
@@ -28,7 +28,7 @@ def enviar_mensagem_whatsapp():
     contato_selecionado = st.selectbox("Selecione um contato para enviar mensagem:", [f"{nome} ({numero})" for nome, numero in contatos.items()])
     
     # Extrair o número do contato selecionado
-    contato_numero = contatos[contato_selecionado.split(' (')[0]]  # Pega apenas o nome antes de ' ('
+    contato_numero = listaDeContatos[contato_selecionado.split(' (')[0]]  # Pega apenas o nome antes de ' ('
     
     mensagem = st.text_area("Digite a mensagem:")
     
