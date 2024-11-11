@@ -1,17 +1,14 @@
 import streamlit as st
 import urllib.parse
 
-# Lista de contatos com nomes e números de telefone
-contatos = {
+print "Boas_Vindas"()
+st.title("Assistente para Idosos")
+st.write("Bem-vindo! Escolha uma das opções abaixo.")
+
+listaDeContatos = {
     "Ingred": "+5511944701187",
     "Gabriel": "+5511945329796",
-    "Pedro": "+5511950815157"
-}
-
-# Função para a tela de boas-vindas
-def tela_boas_vindas():
-    st.title("Assistente para Idosos")
-    st.write("Bem-vindo! Escolha uma das opções abaixo.")
+    "Pedro": "+5511950815157"}
 
 # Função para ligar para um contato via WhatsApp
 def ligar_contato_whatsapp():
