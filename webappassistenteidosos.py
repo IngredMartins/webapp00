@@ -1,6 +1,6 @@
 import streamlit as st
 st.audio('https://soundcloud.com/naturaiz/sets/vuga-crazy-technology?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing')
-st.audio(audio_file.read(), format='audio/mp3')
+
 
 disciplinas = {
     "Lógica de Programação": [
