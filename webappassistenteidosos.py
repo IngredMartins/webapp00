@@ -1,6 +1,5 @@
 import streamlit as st
-audio_file = open('caminho/para/seu/audio.mp3', 'rb')
-st.audio(audio_file.read(), format='audio/mp3')
+st.audio('audio oga')
 
 disciplinas = {
     "Lógica de Programação": [
