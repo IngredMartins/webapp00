@@ -1,6 +1,7 @@
 import streamlit as st
+st.audio('https://soundcloud.com/vuga-live')
 
-# Perguntas organizadas por disciplina
+
 disciplinas = {
     "Lógica de Programação": [
         {"pergunta": "Qual é o comando usado para exibir algo na tela em Python?", "respostas": ["echo", "printf", "print", "output"], "resposta_correta": "print"},
