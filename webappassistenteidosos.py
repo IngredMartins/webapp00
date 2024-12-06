@@ -1,7 +1,6 @@
 import streamlit as st
-audio_file = open(C:\Users\Ingred\Music, rb)
+audio_file = open('caminho/para/seu/audio.mp3', 'rb')
 st.audio(audio_file.read(), format='audio/mp3')
-
 
 disciplinas = {
     "Lógica de Programação": [
