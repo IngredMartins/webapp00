@@ -1,5 +1,6 @@
 import streamlit as st
-st.audio('https://soundcloud.com/naturaiz/sets/vuga-crazy-technology?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing')
+audio_file = open(C:\Users\Ingred\Music\TRACKS EM WAV\V.A Free Earth, rb)
+st.audio(audio_file.read(), format='audio/mp3')
 
 
 disciplinas = {
