@@ -1,5 +1,5 @@
 import streamlit as st
-audio_file = open(C:\Users\Ingred\Music\TRACKSEMWAV\VAFreeEarth, rb)
+audio_file = open(C:\Users\Ingred\Music, rb)
 st.audio(audio_file.read(), format='audio/mp3')
 
 
